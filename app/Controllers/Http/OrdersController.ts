@@ -1,5 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { schema } from '@ioc:Adonis/Core/Validator'
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import Order from 'App/Models/Order'
 
 export default class OrdersController {
@@ -13,20 +13,20 @@ export default class OrdersController {
     return await view.render('orders/show/show.edge', { order })
   }
 
-  public async update({ request, response, params }: HttpContextContract) {
-    const orderData = await request.validate({ schema: updateOrderSchema })
-    const order = await Order.findOrFail(params.id)
-    order.customersName = orderData.customersName,
-    order.customersPhone = orderData.customersPhone,
-    order.customersEmail = orderData.customersEmail
-    await order.save()
-
-    return response.redirect().toRoute('OrdersController.index', [params.id])
+  public async update({ request, response, params, session }: HttpContextContract) {
+      const orderData = await request.validate({ schema: updateOrderSchema })
+      const order = await Order.findOrFail(params.id)
+      order.customersName = orderData.customersName,
+      order.customersPhone = orderData.customersPhone,
+      order.customersEmail = orderData.customersEmail
+      await order.save()
+      session.flash('messageSucces', 'Your data was saved')
+      return response.redirect().toRoute('OrdersController.index')
   }
 }
 
 const updateOrderSchema = schema.create({
   customersName: schema.string(),
   customersPhone: schema.string(),
-  customersEmail: schema.string()
+  customersEmail: schema.string(),
 })

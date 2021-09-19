@@ -18,7 +18,12 @@
     @endslot
 
     @slot('body')
+    <div>
+      @if(flashMessages.has('messageSucces'))
+      <p>{{flashMessages.get('messageSucces')}}</p>
+      @endif
     @each((order, index) in orders)
+    </div>
     <tr id="order_{{order.id}}" class="bg-white">
       <td class="text-primary-600">{{order.name}}</td>
       <td>

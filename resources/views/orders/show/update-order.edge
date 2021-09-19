@@ -1,33 +1,36 @@
 <form action="{{route('OrdersController.update', [order.id], { qs: {_method: 'PUT'} })}}" method="post">
-    <div class="md:flex md:items-center md:space-x-5 space-y-3 md:space-y-0">
-      <div>
+    <div class="flex md:space-x-5 space-y-3 md:space-y-0">
+      <div class="p-4 m-1">
         <label for="{{order.id}}_input_name">Name</label>
         <input value="{{order.customersName}}" type="text" name="customersName" id="{{order.id}}_input_name"
           class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md">
       </div>
-      <div>
+      <div class="p-5">
         <label for="{{order.id}}_input_price">Email</label>
         <input value="{{order.customersEmail}}" type="email" name="customersEmail" id="{{order.id}}_input_email"
           class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md">
       </div>
-      <div>
+      <div class="p-5">
         <label for="{{order.id}}_input_price">Phone</label>
         <input value="{{order.customersPhone}}" type="tel" name="customersPhone" id="{{order.id}}_input_phone"
           class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md">
       </div>
-    </div>
-    <button type="submit"
-      class="mt-2 px-3 py-1.5 flex items-center space-x-2 rounded-lg text-gray-800 bg-white hover:bg-primary-100 border border-gray-300 shadow text-sm">
-      <div>
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-          <path fill-rule="evenodd"
-            d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-            clip-rule="evenodd"></path>
-        </svg>
+      <div class="p-9">
+        <button type="submit"
+          class="mt-2 w-4/9 px-3 py-1.5 flex items-center space-x-2 rounded-lg text-gray-800 bg-white hover:bg-primary-100 border border-gray-300 shadow text-sm">
+          <div>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+              <path fill-rule="evenodd"
+                d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <span>
+            Update
+          </span>
+        </button>
+
       </div>
-      <span>
-        Update
-      </span>
-    </button>
+    </div>
   </form>
